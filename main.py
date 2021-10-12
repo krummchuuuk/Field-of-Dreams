@@ -1,4 +1,4 @@
-
+import random
 
 class Word:
     def __init__(self, word: str) -> None:
@@ -37,9 +37,34 @@ class Word:
 
         return letter in self.letters
 
-class Game:
-    pass
+    def __str__(self):
+        return ''.join(self.letters)
 
+class Game:
+    def __init__(self, words: list) -> None:
+        self.words = words
+
+    def run(self):
+        word = random.choice(self.words)
+        while not word.is_guest():
+            l = None
+            while True:
+                l = input("Enter a letter: ")
+                try:
+                    word.has_letter(l)
+                except ValueError as ve:
+                    print(ve)
+                    continue
+
+                if word.guess_letter(l):
+                    print(f"Letter <{l}> is correct!")
+                else:
+                    print(f"Letter <{l}> is not correct correct!")
+                
+                break
+        print(f"Congratulations, you guest the \"{word}\" word")
 
 if __name__ == "__main__":
-    pass
+    words = [Word("nword"), Word("angel")]
+    g = Game(words)
+    g.run()
