@@ -7,6 +7,10 @@ class TestWord(unittest.TestCase):
         word = "bread"
         self.word = Word(word)
 
+    def test_try_to_guess_letter(self):
+        self.assertEqual(self.word.guess_letter("r"), True)
+        self.assertEqual(self.word.guess_letter("g"), False)
+
     def test_word_has_provided_letter(self):
         self.assertEqual(self.word.has_letter("r"), True)
         self.assertEqual(self.word.has_letter("j"), False)
