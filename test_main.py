@@ -16,3 +16,7 @@ class TestWord(unittest.TestCase):
 class TestGame(unittest.TestCase):
     def setUp(self) -> None:
         self.game = Game()
+
+
+if __name__ == "__main__":
+    unittest.main()
