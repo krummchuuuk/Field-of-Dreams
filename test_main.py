@@ -15,6 +15,15 @@ class TestWord(unittest.TestCase):
         self.assertEqual(self.word.has_letter("r"), True)
         self.assertEqual(self.word.has_letter("j"), False)
 
+    def test_that_word_is_guest(self):
+        self.assertEqual(self.word.is_guest(), False)
+        self.word.guess_letter("b")
+        self.word.guess_letter("r")
+        self.word.guess_letter("e")
+        self.word.guess_letter("a")
+        self.word.guess_letter("d")
+        self.assertEqual(self.word.is_guest(), True)
+
 class TestGame(unittest.TestCase):
     def setUp(self) -> None:
         self.game = Game()
