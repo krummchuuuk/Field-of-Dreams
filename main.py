@@ -2,7 +2,12 @@
 
 class Word:
     def __init__(self, word: str) -> None:
-        self.word = word
+        self.word = {}
+        for letter in word:
+            self.word[letter] = {
+                "is_guest": False
+            }
+
 
     def has_letter(self, letter) -> bool:
         if isinstance(letter, int):
@@ -11,7 +16,7 @@ class Word:
         if letter.isdigit():
             raise ValueError(f"<{letter}> provided as 'str' type, but it's 'int' value")
 
-        return letter in self.word
+        return letter in self.word.keys()
 
 class Game:
     pass
